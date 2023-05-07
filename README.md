@@ -24,7 +24,7 @@ git clone https://github.com/sidd5449/IOTApp.git .
 
 ## Snapshots 📸
 
-<img src="screenshots/appScreenShots.png"/>
+<img src="portal/screenshots/appScreenShots.png"/>
 
 ## Benefits 👀
 
