@@ -1,38 +1,50 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700&display=swap');
-*{
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700&display=swap");
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
-
+  font-family: "Poppins", sans-serif;
 }
-html{
+html {
   scroll-behavior: smooth;
 }
-body{
+body {
   overflow-x: hidden;
-  
 }
-::-webkit-scrollbar{
+::-webkit-scrollbar {
   width: 0;
 }
-h1, h2, h3, h4, h5, h6, p{
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
   color: #e5e5e5;
 }
 
-a{
+a {
   text-decoration: none;
 }
-.app__home, .app__booking{
+.app__home,
+.app__booking {
   background: linear-gradient(-45deg, #02001a, #020107);
-  min-height: 100vh;
+  min-height: 155vh;
 }
-.app__link{
+.app__link {
   text-decoration: none;
 }
 
-.app__receipt{
+.app__receipt {
   background-color: #02001a;
   height: 100vh;
   padding: 6vw;
+}
+
+@media only screen and (max-width: 425px) {
+  .app__home,
+  .app__booking {
+    min-height: 100vh;
+  }
 }
