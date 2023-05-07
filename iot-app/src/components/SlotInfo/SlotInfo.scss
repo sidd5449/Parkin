@@ -1,0 +1,30 @@
+.app__slotInfo{
+    display: flex;
+    flex-direction: column;
+    padding: 6vw;
+    align-items: center;
+}
+.app__slotInfo-stat{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30vh;
+    width: 88vw;
+    border-radius: 2vh;
+
+    p{
+        font-size: 16vw;
+        font-weight: 500;
+    }
+
+}
+.app__slotInfo-btn{
+    margin-top: 12vh;
+    width: 50vw;
+    padding: 2vh;
+    background: none;
+    border-radius: 2vh;
+    border: 2px solid #fff;
+    color: #fff;
+
+}
