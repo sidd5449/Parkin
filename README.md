@@ -9,6 +9,18 @@ Use [git](https://git-scm.com/download/win) to clone this app.
 ```bash
 git clone https://github.com/sidd5449/IOTApp.git .
 ```
+## Running the server 💽
+
+```bash
+cd ./server.
+```
+```bash
+npm i
+```
+
+```bash
+nodemon index.js
+```
 
 ## Features 💡
 
