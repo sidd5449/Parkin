@@ -1,8 +1,8 @@
-import iotData from "./schema.js";
+import slotData from "./schema.js";
 
 export const getSensData = async(req, res) =>{
     try {
-        const sensData = await iotData.find();
+        const sensData = await slotData.find();
         res.status(200).json(sensData);
         
     } catch (err) {
@@ -23,7 +23,7 @@ export const updateStat = async(req, res) => {
             }
         }
         try {
-            await iotData.updateOne(filter, updata);
+            await slotData.updateOne(filter, updata);
             res.status(200).json(updata);
             console.log('updated');
         } catch (err) {
@@ -37,7 +37,7 @@ export const updateStat = async(req, res) => {
 export const getSpecific = async(req, res) => {
     try {
         const { id } = req.params;
-        const slot = await iotData.findOne({ id:id });
+        const slot = await slotData.findOne({ id:id });
         res.json(slot);
     } catch (err) {
         res.status(404).json({message: err.message});
