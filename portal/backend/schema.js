@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const iotSchema = new mongoose.Schema(
+const slotSchema = new mongoose.Schema(
     {
         id: {
             type: Number,
@@ -10,14 +10,17 @@ const iotSchema = new mongoose.Schema(
             type: Number,
             required: true,
         },
-        booked: {
-            type: Number,
+        regNo:{
+            type: String,
             required: false,
-            default: 0,
+        },
+        name: {
+            type: String,
+            required: false,
         }
     }
 );
 
-const iotData = mongoose.model("iotData", iotSchema);
+const slotData = mongoose.model("slotData", slotSchema);
 
-export default iotData;
+export default slotData;
