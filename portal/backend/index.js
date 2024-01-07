@@ -4,7 +4,6 @@ import  dotenv from 'dotenv';
 import cors from 'cors';
 import { getSensData } from './controller.js';
 import dataRouter from './routes/route.js';
-import iotData from './schema.js';
 import bookRouter from './routes/updateRoutes.js';
 import getInfoRouter from './routes/getInfoRouter.js';
 
