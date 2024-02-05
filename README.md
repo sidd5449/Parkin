@@ -60,3 +60,7 @@ IoT based parking system is a promising solution to tackle the challenges of par
 ## License 🪪
 
 [MIT](https://choosealicense.com/licenses/mit/)
+
+## Process Documentation
+
+[Miro Board](https://miro.com/app/board/uXjVMhobVEs=/?share_link_id=187769475920)
