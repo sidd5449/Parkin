@@ -1,13 +1,13 @@
 ![PARKIN’ (1)](https://github.com/sidd5449/Parkin/assets/76845396/b236c71d-1657-4ce1-b460-cf5ce8bb5cdf)
 
-IoT based parking system is a smart solution to automate and optimize parking management in urban areas. This system utilizes ultrasonic sensor, Arduino Nano 33 IOT to detect and monitor the availability of parking spaces in real-time. With the help of a user-friendly <a href="https://parkin.fun/" target=_blank>web application</a>, drivers can easily find and reserve parking spots, while the system ensures efficient utilization of parking spaces and reduces congestion on the roads,It also include <a href="screenshots/qrcode.jpeg">QR Code</a> that you can scan and open portal.
+The IoT-based parking system represents an intelligent approach to streamline and enhance parking management in urban settings. Employing ultrasonic sensors and the Arduino Nano 33 IoT, this system actively detects and monitors real-time parking space availability. Through a user-friendly <a href="https://parkin.fun/" target=_blank>web application</a>, drivers can effortlessly locate and reserve parking spots. The system not only facilitates easy access for drivers but also ensures the optimal utilization of parking spaces, thereby mitigating road congestion. Additionally, the inclusion of a QR code allows users to conveniently scan and access the portal.
 
 ## Installation 💽
 
 Use [git](https://git-scm.com/download/win) to clone this app.
 
 ```bash
-git clone https://github.com/sidd5449/IOTApp.git .
+git clone https://github.com/sidd5449/Parkin .
 ```
 
 ## Running the server 💽
