@@ -1,4 +1,4 @@
-import slotData from '../schemas/slotData.js';
+const slotData = require ('../schemas/slotData.js');
 
 
 const releaseSlot = async(id) => {
@@ -22,7 +22,7 @@ const fillSlot = async(id) => {
     console.log("filled");
 };
 
-export const c2sController = async(req, res) => {
+const c2sController = async(req, res) => {
     try {
         console.log(req);
         const data = req.body;
@@ -41,3 +41,5 @@ export const c2sController = async(req, res) => {
         res.status(400);
     }
 };
+
+module.exports = {c2sController};

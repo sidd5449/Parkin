@@ -1,8 +1,8 @@
-import express from "express";
-import {unbookController} from "../middleware/unbookController.js";
+const express = require("express");
+const {unbookController} = require("../middleware/unbookController.js");
 
 const router = express.Router();
 
 router.patch("/:id", unbookController);
 
-export default router;
+module.exports =  router;

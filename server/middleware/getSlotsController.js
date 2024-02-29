@@ -1,6 +1,6 @@
-import slotData from "../schemas/slotData.js";
+const slotData = require ("../schemas/slotData.js");
 
-export const getSlotsController = async(req,res)=>{
+const getSlotsController = async(req,res)=>{
     try {
         const allSlots = await slotData.find();
         if (typeof allSlots !== 'undefined' && allSlots.length > 0) {
@@ -10,3 +10,5 @@ export const getSlotsController = async(req,res)=>{
         res.json({message: error.message});
     }
 }
+
+module.exports = {getSlotsController};

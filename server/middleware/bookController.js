@@ -1,6 +1,6 @@
-import slotData from "../schemas/slotData.js";
+const slotData =require ("../schemas/slotData.js");
 
-export const bookController = async (req, res) => {
+const bookController = async (req, res) => {
   try {
     const filter = { id: req.params.id };
     const slot = await slotData.findOne(filter);
@@ -23,3 +23,5 @@ export const bookController = async (req, res) => {
     }
   }
 };
+
+module.exports = {bookController};
