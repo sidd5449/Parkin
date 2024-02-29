@@ -4,6 +4,9 @@ import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 import c2sRouter from './routes/c2sRouter.js';
+import bookRouter from "./routes/bookRouter.js";
+import unbookRouter from "./routes/unbookRouter.js";
+import getSlotsRouter from "./routes/getSlotsRouter.js";
 import axios from 'axios';
 import slotData from './schemas/slotData.js';
 import { statusController } from './middleware/statusController.js';
@@ -67,13 +70,15 @@ const data = [
 
 app.use("/c2sInterface", c2sRouter);
 app.get("/", statusController);
-// app.use("/book", bookRouter);
+app.use("/book", bookRouter);
+app.use("/unbook",unbookRouter);
+app.use("/getSlots", getSlotsRouter);
 
 mongoose.connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 }).then(() => {
     app.listen(PORT, () => console.log(`SERVER STARTED AT ${PORT}`));
-    slotData.insertMany(data);
+    // slotData.insertMany(data);
     // axios.post('http://localhost:6001/c2sInterface', data);
 }).catch((err) => console.log(err.message));
