@@ -83,4 +83,4 @@ mongoose.connect(process.env.MONGO_URI, {
     // axios.post('http://localhost:6001/c2sInterface', data);
 }).catch((err) => console.log(err.message));
 
-module.exports = app;
+// module.exports = app;
