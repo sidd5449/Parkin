@@ -82,5 +82,3 @@ mongoose.connect(process.env.MONGO_URI, {
     // slotData.insertMany(data);
     // axios.post('http://localhost:6001/c2sInterface', data);
 }).catch((err) => console.log(err.message));
-
-module.exports = app;
