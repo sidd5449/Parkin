@@ -1,8 +1,8 @@
-const express = require( 'express');
-const { c2sController } = require( '../middleware/c2sController.js')
+import express from 'express';
+import { c2sController } from '../middleware/c2sController.js'
 
 const router = express.Router();
 
 router.post("/", c2sController);
 
-module.exports =  router;
+export default router;

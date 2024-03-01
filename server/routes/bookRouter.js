@@ -1,8 +1,8 @@
-const express =require( "express");
-const {bookController} =require ("../middleware/bookController.js");
+import express from "express";
+import {bookController} from "../middleware/bookController.js";
 
 const router = express.Router();
 
 router.patch("/:id", bookController);
 
-module.exports =  router;
+export default router;

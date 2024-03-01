@@ -1,8 +1,8 @@
-const express = require( "express");
-const { getSlotsController } = require( "../middleware/getSlotsController.js");
+import express from "express";
+import { getSlotsController } from "../middleware/getSlotsController.js";
 
 const router = express.Router();
 
 router.get("/",getSlotsController);
 
-module.exports =  router;
+export default router;

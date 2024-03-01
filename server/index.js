@@ -1,15 +1,15 @@
-const express = require('express');
-const cors = require('cors');
-const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
-const dotenv = require('dotenv');
-const c2sRouter = require('./routes/c2sRouter.js');
-const bookRouter = require( "./routes/bookRouter.js");
-const unbookRouter = require( "./routes/unbookRouter.js");
-const getSlotsRouter = require( "./routes/getSlotsRouter.js");
-const axios = require( 'axios');
-const slotData = require( './schemas/slotData.js');
-const { statusController } = require( './middleware/statusController.js');
+import express from 'express';
+import cors from 'cors';
+import mongoose from 'mongoose';
+import bodyParser from 'body-parser';
+import dotenv from 'dotenv';
+import c2sRouter from './routes/c2sRouter.js';
+import bookRouter from "./routes/bookRouter.js";
+import unbookRouter from "./routes/unbookRouter.js";
+import getSlotsRouter from "./routes/getSlotsRouter.js";
+import axios from 'axios';
+import slotData from './schemas/slotData.js';
+import { statusController } from './middleware/statusController.js';
 
 dotenv.config();
 const app = express();
@@ -82,3 +82,5 @@ mongoose.connect(process.env.MONGO_URI, {
     // slotData.insertMany(data);
     // axios.post('http://localhost:6001/c2sInterface', data);
 }).catch((err) => console.log(err.message));
+
+// module.exports = app;
