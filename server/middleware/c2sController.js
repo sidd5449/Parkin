@@ -40,4 +40,4 @@ export const c2sController = async(req, res) => {
     } catch (err) {
         res.status(400);
     }
-};
+}; 
