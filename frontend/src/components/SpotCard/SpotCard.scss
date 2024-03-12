@@ -1,0 +1,18 @@
+.app__spotcard{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5vh;
+}
+
+.app__spotcard-vehinfo{
+    display: flex;
+    gap: 8vw;
+}
+.vehinfo-fours, .vehinfo-twos{
+    display: flex;
+}
+hr{
+    background-color: #000;
+    border-top: 2px dotted #FF7A00;
+    border-bottom: #000;
+}

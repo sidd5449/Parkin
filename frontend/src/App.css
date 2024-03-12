@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&family=Open+Sans:wght@500&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Kumbh Sans", sans-serif;
+
+
+}
+h2{
+    font-size: 20px;
+}
+p{
+    font-size: 16px;
+    font-weight: 300;
+}
+h1, h2, p{
+    color: aliceblue;
+}
+body{
+    background-color: #1b1b1b;
+}
