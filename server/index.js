@@ -10,6 +10,7 @@ import getSlotsRouter from "./routes/getSlotsRouter.js";
 import axios from 'axios';
 import slotData from './schemas/slotData.js';
 import { statusController } from './middleware/statusController.js';
+import slotByIdRouter from './routes/slotByIdRouter.js';
 
 dotenv.config();
 const app = express();
@@ -73,6 +74,8 @@ app.get("/", statusController);
 app.use("/book", bookRouter);
 app.use("/unbook",unbookRouter);
 app.use("/getSlots", getSlotsRouter);
+app.use("/slot/", slotByIdRouter);
+
 
 mongoose.connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
