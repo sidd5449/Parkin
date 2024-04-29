@@ -22,8 +22,18 @@ const slotSchema = new mongoose.Schema({
   },
   vehicleNo: {
     type: String,
+    // required: true,
+    default: null,
   },
   idNumber: {
+    type: String,
+    // required: true,
+    default: null,
+  },
+  lattitude: {
+    type: String,
+  },
+  longitude: {
     type: String,
   },
 });

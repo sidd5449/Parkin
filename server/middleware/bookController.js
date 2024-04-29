@@ -3,6 +3,8 @@ import slotData from "../schemas/slotData.js";
 export const bookController = async (req, res) => {
   try {
     const filter = { id: req.params.id };
+    const { orderId, bookedFrom, bookedTo, vehicleNo, idNumber } = req.body;
+    console.log(req.body);
     const slot = await slotData.findOne(filter);
     if (slot.booked === 1) {
       res.status(401).json({ message: "Already booked" });
@@ -10,6 +12,11 @@ export const bookController = async (req, res) => {
       const updata = {
         $set: {
           booked: 1,
+          orderId: orderId,
+          bookedFrom: bookedFrom,
+          bookedTo: bookedTo,
+          vehicleNo: vehicleNo,
+          idNumber: idNumber,
         },
       };
       await slotData.updateOne(filter, updata);
