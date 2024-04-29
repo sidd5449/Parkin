@@ -5,16 +5,21 @@ import axios from "axios";
 // import Razorpay from "razorpay";
 import useRazorpay from "react-razorpay";
 import { v4 as uuid4 } from "uuid";
+import QRCode from "react-qr-code";
 
 const Booking = () => {
   const { id } = useParams();
   const [slot, setslot] = useState(null);
   const [hour, sethour] = useState(0);
   const [Razorpay] = useRazorpay();
+  const [booked, setbooked] = useState(false);
+  const [qrString, setqrString] = useState("");
+  const [vNumber, setvNumber] = useState("");
+  const [iNumber, setiNumber] = useState("");
 
   const initPayment = (data) => {
     const options = {
-      key: "rzp_test_oNSpwBXKYtx6rB",
+      key: "rzp_test_q1JbyDfqTwG08I",
       amount: data.amount,
       currency: data.currency,
       name: "Slot booking",
@@ -23,8 +28,29 @@ const Booking = () => {
       handler: async (response) => {
         try {
           const verifyUrl = "https://tr7fv5-6001.csb.app/pay/verify";
-          const { data } = await axios.post(verifyUrl, response);
-          console.log(data);
+          axios.post(verifyUrl, response).then((item) => {
+            console.log(item);
+            if (item.data.message === "Success") {
+              const timestamp = new Date();
+              const dataStr = `${timestamp.getHours()}:${timestamp.getMinutes()}:${timestamp.getSeconds()}`;
+              const newdataStr = `${timestamp.getHours() + hour}:${timestamp.getMinutes()}:${timestamp.getSeconds()}`;
+              const upData = {
+                orderId: data.id,
+                bookedFrom: dataStr,
+                bookedTo: newdataStr,
+                vehicleNo: vNumber,
+                idNumber: iNumber,
+              };
+
+              axios.patch(`https://tr7fv5-6001.csb.app/book/${id}`, upData);
+
+              const unId = data.id;
+              // const dataStr = `${timestamp.getHours()}:${timestamp.getMinutes()}:${timestamp.getSeconds()}`;
+              const finalStr = `Slot Number: ${id}, Time: ${dataStr}, Token: ${unId}`;
+              setqrString(finalStr);
+              setbooked(true);
+            }
+          });
         } catch (error) {
           console.log(error);
         }
@@ -61,10 +87,14 @@ const Booking = () => {
     sethour(hour + 1);
   };
   const decHour = () => {
-    sethour(hour - 1);
+    if (hour === 0) {
+      sethour(0);
+    } else {
+      sethour(hour - 1);
+    }
   };
 
-  if (slot !== null) {
+  if (slot !== null && booked === false) {
     return (
       <div>
         <Header />
@@ -113,8 +143,16 @@ const Booking = () => {
             </p>
           </div>
           <div className="slot-inputs">
-            <input type="text" placeholder="Vehicle Number..." />
-            <input type="text" placeholder="ID Number..." />
+            <input
+              type="text"
+              placeholder="Vehicle Number..."
+              onChange={(e) => setvNumber(e.target.value)}
+            />
+            <input
+              type="text"
+              placeholder="ID Number..."
+              onChange={(e) => setiNumber(e.target.value)}
+            />
           </div>
           <div
             className="slot-hours"
@@ -154,6 +192,85 @@ const Booking = () => {
             onClick={handlePayment}
           >
             Proceed to Payment
+          </button>
+        </div>
+      </div>
+    );
+  }
+  if (slot !== null && booked === true) {
+    return (
+      <div>
+        <Header />
+        <div
+          className="app__booking-slot"
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            placeContent: "center",
+            justifyContent: "center",
+            textAlign: "center",
+          }}
+        >
+          <div
+            className="app__slot-no"
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              marginTop: "10vh",
+              height: "169px",
+              alignItems: "center",
+            }}
+          >
+            <hr
+              style={{
+                height: "100%",
+                color: "#656565",
+                border: "2px dotted #656565",
+              }}
+            />
+            <h2 style={{ fontSize: "100px", color: "rgba(210,210,210,0.17)" }}>
+              A-{slot.id}
+            </h2>
+            <hr
+              style={{
+                height: "100%",
+                color: "#656565",
+                border: "2px dotted #656565",
+              }}
+            />
+          </div>
+          <div className="slot-info" style={{ marginTop: "6vh" }}>
+            <p style={{ fontWeight: 500 }}>Type: 4-Wheeler</p>
+            <p style={{ marginTop: "8px", fontWeight: 500 }}>
+              Booking Rate: INR {process.env.REACT_APP_RATE}/hour
+            </p>
+            <p>Vehicle No: {vNumber}</p>
+            <p>ID No: {iNumber}</p>
+          </div>
+          <QRCode
+            value={qrString}
+            bgColor="#151515"
+            fgColor="#fff"
+            size={150}
+            className="qr-code"
+            style={{ margin: "4vh auto" }}
+          />
+
+          <button
+            style={{
+              backgroundColor: "#ff7a00",
+              marginTop: "8vh",
+              padding: "2vh 1vh",
+              borderRadius: "1vh",
+              color: "#fff",
+              fontWeight: "500",
+            }}
+          >
+            <a
+              href={`https://www.google.com/maps/search/?api=1&query=${slot.lattitude}%2C${slot.longitude}`}
+            >
+              Navigate To The Spot
+            </a>
           </button>
         </div>
       </div>
