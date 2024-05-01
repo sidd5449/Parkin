@@ -1,0 +1,43 @@
+.heading1 {
+  margin-top: 64px;
+  font-size: 36px;
+}
+
+.text1 {
+  margin-top: 22px;
+  font-size: 18px;
+}
+
+.text2 {
+  margin-top: 37px;
+  font-size: 16px;
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+
+  margin-top: 44px;
+  margin: auto;
+  width: 80%;
+}
+
+.but-1 {
+  display: flex;
+  flex-direction: column;
+  margin-top: 44px;
+
+  border: 2px solid orange;
+  border-radius: 22px;
+  padding: 20px;
+}
+
+.but-2 {
+  display: flex;
+  flex-direction: column;
+  margin-top: 44px;
+
+  border: 2px solid orange;
+  border-radius: 22px;
+  padding: 20px;
+}
