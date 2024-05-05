@@ -1,4 +1,4 @@
-import order from "../schemas/order";
+import order from "../schemas/order.js";
 export const orderController = async (req, res) => {
   try {
     console.log(req.body);

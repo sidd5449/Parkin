@@ -3,6 +3,6 @@ import { getSlotsController } from "../middleware/getSlotsController.js";
 
 const router = express.Router();
 
-router.get("/",getSlotsController);
+router.get("/:id", getSlotsController);
 
 export default router;

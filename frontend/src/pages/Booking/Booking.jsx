@@ -44,9 +44,9 @@ const Booking = () => {
 
               axios.patch(`https://tr7fv5-6001.csb.app/book/${id}`, upData);
 
-              const unId = data.id;
+              const unqId = data.id;
               // const dataStr = `${timestamp.getHours()}:${timestamp.getMinutes()}:${timestamp.getSeconds()}`;
-              const finalStr = `Slot Number: ${id}, Time: ${dataStr}, Token: ${unId}`;
+              const finalStr = `Slot Number: ${id}, Time: ${dataStr}, Token: ${unqId}`;
               setqrString(finalStr);
               setbooked(true);
             }

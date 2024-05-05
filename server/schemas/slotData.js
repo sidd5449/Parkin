@@ -5,6 +5,12 @@ const slotSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  unId: {
+    type: String,
+  },
+  spot: {
+    type: String,
+  },
   status: {
     type: Number,
   },

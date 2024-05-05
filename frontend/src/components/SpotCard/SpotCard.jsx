@@ -1,8 +1,7 @@
-import React from 'react';
-import './SpotCard.scss';
+import React from "react";
+import "./SpotCard.scss";
 
-const SpotCard = ( props ) => {
-  console.log(props);
+const SpotCard = (props) => {
   return (
     <div className="app__spotcard">
       <h2>{props.spotTitle}</h2>
@@ -19,7 +18,7 @@ const SpotCard = ( props ) => {
       </div>
       <hr />
     </div>
-  )
-}
+  );
+};
 
-export default SpotCard
+export default SpotCard;
