@@ -1,9 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import "./ScanQR.css";
 import { FiMaximize } from "react-icons/fi";
 import { AiOutlineScan } from "react-icons/ai";
+import { Scanner } from "@yudiel/react-qr-scanner";
+import axios from "axios";
 
 const ScanQR = () => {
+  const [data, setdata] = useState(null);
+  const [dbData, setdbData] = useState(null);
+  if (data !== null && dbData === null) {
+    const splits = data.split(",");
+    const slotId = splits[0];
+    const payId = splits[2];
+    axios.get("https://tr7fv5-6001.csb.app/slot/slotId").then((item) => {
+      setdbData(item.data);
+    });
+    if (dbData.order_id === payId) {
+      console.log("Success");
+    }
+    if (dbData.order !== payId) {
+      console.log("fail");
+    }
+  }
   return (
     <div>
       <h1
@@ -30,26 +48,11 @@ const ScanQR = () => {
           Scan QR Code provided to user while booking the slot
         </p>
       </div>
-      <button
-        style={{
-          padding: "10px",
-          border: "2px solid orange",
-          marginTop: "70px",
-          borderRadius: "22px",
-          marginLeft: "-1px",
-        }}
-      >
-        <AiOutlineScan
-          style={{
-            fontSize: "300px",
-            color: "white",
-
-            margin: "auto",
-            marginTop: "9px",
-            marginLeft: "-5px",
-          }}
-        />
-      </button>
+      <Scanner
+        onResult={(text, result) => setdata(text)}
+        onError={(error) => console.log(error?.message)}
+      />
+      <p>{data}</p>
     </div>
   );
 };
