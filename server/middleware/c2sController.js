@@ -1,7 +1,7 @@
 import slotData from "../schemas/slotData.js";
 
-const releaseSlot = async (id) => {
-  const filter = { _id: id };
+const releaseSlot = async (id, spot) => {
+  const filter = { id: id, spot: spot };
   const updata = {
     $set: {
       status: 1,
@@ -10,8 +10,8 @@ const releaseSlot = async (id) => {
   await slotData.updateOne(filter, updata);
   console.log("released");
 };
-const fillSlot = async (id) => {
-  const filter = { _id: id };
+const fillSlot = async (id, spot) => {
+  const filter = { id: id, spot: spot };
   const updata = {
     $set: {
       status: 0,
@@ -29,10 +29,10 @@ export const c2sController = async (req, res) => {
     data.map(async (item) => {
       console.log(item);
       if (item.occupied === 0) {
-        await releaseSlot(item.id);
+        await releaseSlot(item.id, item.spot);
       }
       if (item.occupied === 1) {
-        await fillSlot(item.id);
+        await fillSlot(item.id, item.spot);
       }
     });
     res.status(201).json("Data updated");
