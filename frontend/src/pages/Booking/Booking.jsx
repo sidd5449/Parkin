@@ -46,7 +46,7 @@ const Booking = () => {
 
               const unqId = data.id;
               // const dataStr = `${timestamp.getHours()}:${timestamp.getMinutes()}:${timestamp.getSeconds()}`;
-              const finalStr = `Slot Number: ${id}, Time: ${dataStr}, Token: ${unqId}`;
+              const finalStr = `${id},${dataStr},${unqId}`;
               setqrString(finalStr);
               setbooked(true);
             }
