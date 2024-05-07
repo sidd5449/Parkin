@@ -2,7 +2,8 @@ import slotData from "../schemas/slotData.js";
 
 export const bookController = async (req, res) => {
   try {
-    const filter = { unId: req.params.id };
+    const { id } = req.params;
+    const filter = { unId: id };
     const { orderId, bookedFrom, bookedTo, vehicleNo, idNumber } = req.body;
     console.log(req.body);
     const slot = await slotData.findOne(filter);
