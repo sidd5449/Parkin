@@ -5,7 +5,8 @@ import axios from "axios";
 // import Razorpay from "razorpay";
 import useRazorpay from "react-razorpay";
 import { v4 as uuid4 } from "uuid";
-import QRCode from "react-qr-code";
+// import QRCode from "react-qr-code";
+import QRCode from "qrcode";
 
 const Booking = () => {
   const { id } = useParams();
@@ -47,7 +48,14 @@ const Booking = () => {
               const unqId = data.id;
               // const dataStr = `${timestamp.getHours()}:${timestamp.getMinutes()}:${timestamp.getSeconds()}`;
               const finalStr = `${id},${dataStr},${unqId}`;
-              setqrString(finalStr);
+              QRCode.toDataURL(finalStr)
+                .then((url) => {
+                  setqrString(url);
+                })
+                .catch((err) => {
+                  console.error(err);
+                });
+
               setbooked(true);
             }
           });
@@ -247,14 +255,7 @@ const Booking = () => {
             <p>Vehicle No: {vNumber}</p>
             <p>ID No: {iNumber}</p>
           </div>
-          <QRCode
-            value={qrString}
-            bgColor="#151515"
-            fgColor="#fff"
-            size={150}
-            className="qr-code"
-            style={{ margin: "4vh auto" }}
-          />
+          {qrString && <img src={qrString} alt="qr" />}
 
           <button
             style={{

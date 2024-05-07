@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./ScanQR.css";
 import { FiMaximize } from "react-icons/fi";
 import { AiOutlineScan } from "react-icons/ai";
@@ -8,34 +8,40 @@ import WebSocket from "ws";
 const ScanQR = () => {
   const [data, setdata] = useState(null);
   const [dbData, setdbData] = useState(null);
-  const sendWsId = (id) => {
-    const ws = new WebSocket("ws://localhost:8080");
-    ws.on("open", function open() {
-      console.log("Connected to WebSocket server");
+  // console.log(data);
+  // const sendWsId = (id) => {
+  //   const ws = new WebSocket("ws://localhost:8080");
+  //   ws.on("open", function open() {
+  //     console.log("Connected to WebSocket server");
 
-      // Send a message to the server
-      ws.send("Hello, server! This is the WebSocket client.");
-    });
+  //     // Send a message to the server
+  //     ws.send("Hello, server! This is the WebSocket client.");
+  //   });
 
-    // Event listener for messages received from the server
-    ws.on("message", function incoming(message) {
-      console.log("Received: %s", message);
-    });
-  };
-  if (data !== null && dbData === null) {
-    const splits = data.split(",");
-    const slotId = splits[0];
-    const payId = splits[2];
-    axios.get("https://tr7fv5-6001.csb.app/slot/slotId").then((item) => {
-      setdbData(item.data);
-    });
-    if (dbData.order_id === payId) {
-      console.log("Success");
+  //   // Event listener for messages received from the server
+  //   ws.on("message", function incoming(message) {
+  //     console.log("Received: %s", message);
+  //   });
+  // };
+  useEffect(() => {
+    if (data !== null && dbData === null) {
+      const splits = data.split(",");
+      const slotId = splits[0];
+      const payId = splits[2];
+      console.log(payId);
+      axios.get(`https://tr7fv5-6001.csb.app/slot/${slotId}`).then((item) => {
+        console.log(item.data);
+        setdbData(item.data);
+      });
+      console.log(dbData.orderId);
+      if (dbData && dbData.orderId === payId) {
+        console.log("Success");
+      }
+      if (dbData && dbData.orderId !== payId) {
+        console.log("fail");
+      }
     }
-    if (dbData.order !== payId) {
-      console.log("fail");
-    }
-  }
+  });
   return (
     <div>
       <h1
