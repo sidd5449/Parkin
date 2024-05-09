@@ -3,11 +3,15 @@ import "./ScanQR.css";
 import { FiMaximize } from "react-icons/fi";
 import { AiOutlineScan } from "react-icons/ai";
 import { Scanner } from "@yudiel/react-qr-scanner";
+import { useNavigate } from "react-router-dom";
+import ScanFail from "../scan-status/ScanFail";
+import ScanSuccess from "../scan-status/ScanSuccess";
 import axios from "axios";
 import WebSocket from "ws";
 const ScanQR = () => {
   const [data, setdata] = useState(null);
   const [dbData, setdbData] = useState(null);
+  const navigate = useNavigate();
   // console.log(data);
   // const sendWsId = (id) => {
   //   const ws = new WebSocket("ws://localhost:8080");
@@ -34,9 +38,12 @@ const ScanQR = () => {
         setdbData(item.data);
         if (item.data.orderId === payId) {
           console.log("Success");
+          // axios.get("http://192.168.202.101/item.data.id");
+          navigate(`/success/${item.data.id}`);
         }
         if (item.data.orderId !== payId) {
           console.log("fail");
+          navigate(`/fail/item.data.id`);
         }
       });
 
@@ -56,7 +63,7 @@ const ScanQR = () => {
       >
         PARKIN'
       </h1>
-      <h2 className="heading1">Spot Name</h2>
+      <h2 className="heading1">COEP ENTC Parking</h2>
       <div style={{ display: "flex" }}>
         <FiMaximize
           style={{
