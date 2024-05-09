@@ -32,16 +32,17 @@ const ScanQR = () => {
       axios.get(`https://tr7fv5-6001.csb.app/slot/${slotId}`).then((item) => {
         console.log(item.data);
         setdbData(item.data);
+        if (item.data.orderId === payId) {
+          console.log("Success");
+        }
+        if (item.data.orderId !== payId) {
+          console.log("fail");
+        }
       });
-      console.log(dbData.orderId);
-      if (dbData && dbData.orderId === payId) {
-        console.log("Success");
-      }
-      if (dbData && dbData.orderId !== payId) {
-        console.log("fail");
-      }
+
+      // console.log(dbData.orderId);
     }
-  });
+  }, [data]);
   return (
     <div>
       <h1
