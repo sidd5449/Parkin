@@ -92,24 +92,4 @@ mongoose
 
 // module.exports = app;
 
-const wss = new WebSocketServer({ port: 8080 });
-
-var slotId = "-1";
-
-const setSlotId = function (value) {
-  slotId = value;
-};
-
-export { setSlotId };
-
-wss.on("connection", function connection(ws) {
-  console.log("Arduino WebSocket client connected");
-  //can comment above line if not necessary
-
-  ws.on("message", function incoming(message) {
-    console.log("received: %s", message);
-  });
-
-  ws.send(slotId);
-  slotId = -1;
-});
+// const wss = new WebSocketServer({ port: 8080 });

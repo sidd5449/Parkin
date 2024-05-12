@@ -13,3 +13,16 @@ export const toggleBarrierController = async (req, res) => {
     }
   }
 };
+var slotId = "-1";
+
+wss.on("connection", function connection(ws) {
+  console.log("Arduino WebSocket client connected");
+  //can comment above line if not necessary
+
+  ws.on("message", function incoming(message) {
+    console.log("received: %s", message);
+  });
+
+  ws.send(slotId);
+  slotId = "-1";
+});
