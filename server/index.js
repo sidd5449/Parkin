@@ -94,7 +94,7 @@ mongoose
 
 const wss = new WebSocketServer({ port: 8080 });
 
-var slotId = -1;
+var slotId = "-1";
 
 const setSlotId = function (value) {
   slotId = value;
