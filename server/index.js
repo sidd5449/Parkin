@@ -16,6 +16,8 @@ import { statusController } from "./middleware/statusController.js";
 import slotByIdRouter from "./routes/slotByIdRouter.js";
 import spotRouter from "./routes/spotRouter.js";
 import spotByIdRouter from "./routes/spotByIdRouter.js";
+import toggleBarrierRouter from "./routes/toggleBarrierRouter.js";
+import { WebSocketServer } from 'ws'
 
 dotenv.config();
 const app = express();
@@ -98,6 +100,7 @@ app.use("/create-order/", createOrder);
 app.use("/pay", paymentRouter);
 app.use("/spots", spotRouter);
 app.use("/spot", spotByIdRouter);
+app.use("/toggleBarrier",toggleBarrierRouter);
 
 mongoose
   .connect(process.env.MONGO_URI, {
@@ -112,3 +115,25 @@ mongoose
   .catch((err) => console.log(err.message));
 
 // module.exports = app;
+
+const wss = new WebSocketServer({ port: 8080 });
+
+var slotId=-1;
+
+const setSlotId = function(value) {
+  slotId = value;
+}
+
+export {setSlotId};
+
+wss.on('connection', function connection(ws) {
+  console.log('Arduino WebSocket client connected');
+  //can comment above line if not necessary
+
+  ws.on('message', function incoming(message) {
+    console.log('received: %s', message);
+  });
+
+  ws.send(slotId);
+  slotId=-1;
+});
