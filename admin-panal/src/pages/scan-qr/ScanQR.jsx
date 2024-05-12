@@ -3,11 +3,15 @@ import "./ScanQR.css";
 import { FiMaximize } from "react-icons/fi";
 import { AiOutlineScan } from "react-icons/ai";
 import { Scanner } from "@yudiel/react-qr-scanner";
+import { useNavigate } from "react-router-dom";
+import ScanFail from "../scan-status/ScanFail";
+import ScanSuccess from "../scan-status/ScanSuccess";
 import axios from "axios";
 import WebSocket from "ws";
 const ScanQR = () => {
   const [data, setdata] = useState(null);
   const [dbData, setdbData] = useState(null);
+  const navigate = useNavigate();
   // console.log(data);
   // const sendWsId = (id) => {
   //   const ws = new WebSocket("ws://localhost:8080");
@@ -32,16 +36,20 @@ const ScanQR = () => {
       axios.get(`https://tr7fv5-6001.csb.app/slot/${slotId}`).then((item) => {
         console.log(item.data);
         setdbData(item.data);
+        if (item.data.orderId === payId) {
+          console.log("Success");
+          // axios.get("http://192.168.202.101/item.data.id");
+          navigate(`/success/${item.data.id}`);
+        }
+        if (item.data.orderId !== payId) {
+          console.log("fail");
+          navigate(`/fail/item.data.id`);
+        }
       });
-      console.log(dbData.orderId);
-      if (dbData && dbData.orderId === payId) {
-        console.log("Success");
-      }
-      if (dbData && dbData.orderId !== payId) {
-        console.log("fail");
-      }
+
+      // console.log(dbData.orderId);
     }
-  });
+  }, [data]);
   return (
     <div>
       <h1
@@ -55,7 +63,7 @@ const ScanQR = () => {
       >
         PARKIN'
       </h1>
-      <h2 className="heading1">Spot Name</h2>
+      <h2 className="heading1">COEP ENTC Parking</h2>
       <div style={{ display: "flex" }}>
         <FiMaximize
           style={{

@@ -1,16 +1,24 @@
 import React from "react";
 import { FiCheck } from "react-icons/fi";
+import "./style.css";
+import { useParams } from "react-router";
 
 const ScanSuccess = () => {
+  const { id } = useParams();
   return (
-    <div>
+    <div
+      style={{
+        background: "linear-gradient(45deg, #036007, #000000)",
+        padding: "40px 29px",
+      }}
+    >
       <h1
         className="heading"
         style={{
           fontFamily: "'Krona One', sans-serif",
           fontWeight: "400",
           fontStyle: "normal",
-          fontSize: "29px",
+          fontSize: "22px",
         }}
       >
         PARKIN'
@@ -19,7 +27,7 @@ const ScanSuccess = () => {
         className="heading1"
         style={{ marginTop: "45px", fontSize: "36px", marginBottom: "60px" }}
       >
-        Spot Name
+        COEP ENTC Parking
       </h2>
       <div
         style={{
@@ -31,10 +39,15 @@ const ScanSuccess = () => {
         <button
           style={{
             padding: "27px",
+            width: "223px",
+            height: "223px",
             borderRadius: "50%",
             border: "5px solid #7e7e7e",
-            marginBottom: "60px",
+            margin: "auto",
             backgroundColor: "#BEBEBE",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
           }}
         >
           <FiCheck
@@ -42,15 +55,18 @@ const ScanSuccess = () => {
           />
         </button>
 
-        <p style={{ marginLeft: "25px" }}>User Verified For Slot Number : 2</p>
+        <p style={{ margin: "auto", paddingTop: "20px" }}>
+          User Verified For Slot Number : {id}
+        </p>
         <button
           style={{
             border: "2px solid orange",
-            fontSize: "18px",
-            padding: "18px 0px 18px 0px",
+            fontSize: "14px",
             color: "white",
-            borderRadius: "22px",
-            marginTop: "30px",
+            padding: "12px 18px",
+            borderRadius: "4px",
+            margin: "30px auto",
+            width: "max-content",
           }}
         >
           Raise Barrier
