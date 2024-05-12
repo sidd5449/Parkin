@@ -3,7 +3,7 @@ import {setSlotId} from "../index.js";
 
 export const toggleBarrierController = async (req,res)=>{
     try{
-        toggleSlot = req.body.id;
+        var toggleSlot = req.body.id;
         setSlotId(toggleSlot);
         res.status(200).json({message: "requested to toggle"});
     }catch(error){
