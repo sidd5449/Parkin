@@ -10,12 +10,12 @@ const SpotInfo = () => {
   const { id } = useParams();
   console.log(id);
   if (spot === null) {
-    axios.get(`https://tr7fv5-6001.csb.app/spot/${id}`).then((data) => {
+    axios.get(`https://parkin.onrender.com/spot/${id}`).then((data) => {
       setspot(data.data);
     });
   }
   if (slots === null && spot !== null) {
-    axios.get(`https://tr7fv5-6001.csb.app/getSlots/${id}`).then((slots) => {
+    axios.get(`https://parkin.onrender.com/getSlots/${id}`).then((slots) => {
       setslots(slots.data);
     });
   }
