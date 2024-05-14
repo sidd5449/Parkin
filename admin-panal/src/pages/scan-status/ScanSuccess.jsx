@@ -2,9 +2,15 @@ import React from "react";
 import { FiCheck } from "react-icons/fi";
 import "./style.css";
 import { useParams } from "react-router";
+import axios from "axios";
 
 const ScanSuccess = () => {
   const { id } = useParams();
+  const raiseBarr = (slid) => {
+    axios.post("https://parkin-express-dep.loca.lt/toggleBarrier", {
+      id: slid,
+    });
+  };
   return (
     <div
       style={{
@@ -68,8 +74,9 @@ const ScanSuccess = () => {
             margin: "30px auto",
             width: "max-content",
           }}
+          onClick={raiseBarr.bind(id)}
         >
-          Raise Barrier
+          Close Barrier
         </button>
       </div>
     </div>
