@@ -6,16 +6,18 @@ import axios from "axios";
 const Dashboard = () => {
   const [spots, setspots] = useState(null);
   if (spots === null) {
-    axios.get("https://tr7fv5-6001.csb.app/spots").then((data) => {
-      setspots(data.data);
-    });
+    axios
+      .get("https://parkin-express-dep-192-168-85-78.loca.lt/spots")
+      .then((data) => {
+        setspots(data.data);
+      });
   }
   if (spots !== null) {
     return (
       <div>
         <Header />
         {spots.map((spot) => (
-          <a href={`https://tr7fv5-6002.csb.app/spot/${spot.id}`}>
+          <a href={`/spot/${spot.id}`}>
             <SpotCard
               spotTitle={spot.name}
               spotAddress="Some random dummy adress you’ll never find in this mortal world"

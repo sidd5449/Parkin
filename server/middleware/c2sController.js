@@ -24,7 +24,7 @@ const fillSlot = async (id, spot) => {
 export const c2sController = async (req, res) => {
   try {
     console.log(req);
-    const data = req.body;
+    const { data } = req.body;
     console.log(data);
     data.map(async (item) => {
       console.log(item);

@@ -10,14 +10,18 @@ const SpotInfo = () => {
   const { id } = useParams();
   console.log(id);
   if (spot === null) {
-    axios.get(`https://tr7fv5-6001.csb.app/spot/${id}`).then((data) => {
-      setspot(data.data);
-    });
+    axios
+      .get(`https://parkin-express-dep-192-168-85-78.loca.lt/spot/${id}`)
+      .then((data) => {
+        setspot(data.data);
+      });
   }
   if (slots === null && spot !== null) {
-    axios.get(`https://tr7fv5-6001.csb.app/getSlots/${id}`).then((slots) => {
-      setslots(slots.data);
-    });
+    axios
+      .get(`https://parkin-express-dep-192-168-85-78.loca.lt/getSlots/${id}`)
+      .then((slots) => {
+        setslots(slots.data);
+      });
   }
   console.log(slots);
 
