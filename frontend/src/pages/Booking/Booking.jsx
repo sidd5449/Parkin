@@ -29,7 +29,7 @@ const Booking = () => {
       handler: async (response) => {
         try {
           const verifyUrl =
-            "https://parkin-express-dep-192-168-85-78.loca.lt/pay/verify";
+            "https://parkin-express-dep.loca.lt/pay/verify";
           axios.post(verifyUrl, response).then((item) => {
             console.log(item);
             if (item.data.message === "Success") {
@@ -45,7 +45,7 @@ const Booking = () => {
               };
 
               axios.patch(
-                `https://parkin-express-dep-192-168-85-78.loca.lt/book/${id}`,
+                `https://parkin-express-dep.loca.lt/book/${id}`,
                 upData,
               );
 
@@ -78,7 +78,7 @@ const Booking = () => {
   const handlePayment = async () => {
     try {
       const orderUrl =
-        "https://parkin-express-dep-192-168-85-78.loca.lt/pay/orders";
+        "https://parkin-express-dep.loca.lt/pay/orders";
       const { data } = await axios.post(orderUrl, { amount: hour * 200 });
       console.log(data);
       initPayment(data.data);
@@ -88,11 +88,9 @@ const Booking = () => {
   };
 
   if (slot === null) {
-    axios
-      .get(`https://parkin-express-dep-192-168-85-78.loca.lt/slot/${id}`)
-      .then((data) => {
-        setslot(data.data);
-      });
+    axios.get(`https://parkin-express-dep.loca.lt/slot/${id}`).then((data) => {
+      setslot(data.data);
+    });
   }
   // console.log(slot);
 
