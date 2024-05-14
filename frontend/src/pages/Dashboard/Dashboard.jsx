@@ -6,9 +6,11 @@ import axios from "axios";
 const Dashboard = () => {
   const [spots, setspots] = useState(null);
   if (spots === null) {
-    axios.get("https://parkin.onrender.com/spots").then((data) => {
-      setspots(data.data);
-    });
+    axios
+      .get("https://parkin-express-dep-192-168-85-78.loca.lt/spots")
+      .then((data) => {
+        setspots(data.data);
+      });
   }
   if (spots !== null) {
     return (

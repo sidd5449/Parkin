@@ -16,8 +16,8 @@ import { statusController } from "./middleware/statusController.js";
 import slotByIdRouter from "./routes/slotByIdRouter.js";
 import spotRouter from "./routes/spotRouter.js";
 import spotByIdRouter from "./routes/spotByIdRouter.js";
-import toggleBarrierRouter from "./routes/toggleBarrierRouter.js";
-import { WebSocketServer } from "ws";
+// import toggleBarrierRouter from "./routes/toggleBarrierRouter.js";
+// import { WebSocketServer } from "ws";
 
 dotenv.config();
 const app = express();
@@ -76,7 +76,7 @@ app.use("/create-order/", createOrder);
 app.use("/pay", paymentRouter);
 app.use("/spots", spotRouter);
 app.use("/spot", spotByIdRouter);
-app.use("/toggleBarrier", toggleBarrierRouter);
+// app.use("/toggleBarrier", toggleBarrierRouter);
 
 mongoose
   .connect(process.env.MONGO_URI, {
