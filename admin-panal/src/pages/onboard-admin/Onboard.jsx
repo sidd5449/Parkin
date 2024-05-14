@@ -41,25 +41,26 @@ const Onboard = () => {
             <h3 style={{ marginTop: "25px" }}>Scan QR Code</h3>
           </button>
         </a>
-
-        <button
-          className="but-2"
-          style={{
-            color: "#ffff",
-            margin: "auto",
-            width: "50%",
-            marginTop: "50px",
-          }}
-        >
-          <FiUserPlus
+        <a href="https://parkin.fun/spot/5039fff2-2ecf-40a2-978a-137e7e21ac84">
+          <button
+            className="but-2"
             style={{
-              fontSize: "52px",
+              color: "#ffff",
               margin: "auto",
               width: "50%",
+              marginTop: "50px",
             }}
-          />
-          <h3 style={{ marginTop: "25px" }}>On Site Booking</h3>
-        </button>
+          >
+            <FiUserPlus
+              style={{
+                fontSize: "52px",
+                margin: "auto",
+                width: "50%",
+              }}
+            />
+            <h3 style={{ marginTop: "25px" }}>On Site Booking</h3>
+          </button>
+        </a>
       </div>
     </div>
   );
