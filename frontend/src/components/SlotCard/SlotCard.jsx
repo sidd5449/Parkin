@@ -7,10 +7,10 @@ const SlotCard = (props) => {
   const isOccupied = props.status;
 
   const bgUrl = () => {
-    if (isOccupied === 0 && isBooked === 0) {
+    if (isOccupied === 0) {
       return "url(" + bgImgOccupied + ")";
     }
-    if (isBooked === 1 && isOccupied === 0) {
+    if (isBooked === 1 && isOccupied === 1) {
       return "url(" + bgImgBooked + ")";
     }
     // console.log(bgImg);

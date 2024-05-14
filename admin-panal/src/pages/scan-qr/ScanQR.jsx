@@ -33,19 +33,23 @@ const ScanQR = () => {
       const slotId = splits[0];
       const payId = splits[2];
       console.log(payId);
-      axios.get(`https://tr7fv5-6001.csb.app/slot/${slotId}`).then((item) => {
-        console.log(item.data);
-        setdbData(item.data);
-        if (item.data.orderId === payId) {
-          console.log("Success");
-          // axios.get("http://192.168.202.101/item.data.id");
-          navigate(`/success/${item.data.id}`);
-        }
-        if (item.data.orderId !== payId) {
-          console.log("fail");
-          navigate(`/fail/item.data.id`);
-        }
-      });
+      axios
+        .get(`https://parkin-express-dep.loca.lt/slot/${slotId}`)
+        .then((item) => {
+          console.log(item.data);
+          setdbData(item.data);
+          if (item.data.orderId === payId) {
+            console.log("Success");
+            axios.post("https://parkin-express-dep.loca.lt/toggleBarrier", {
+              id: item.data.id,
+            });
+            navigate(`/success/${item.data.id}`);
+          }
+          if (item.data.orderId !== payId) {
+            console.log("fail");
+            navigate(`/fail/item.data.id`);
+          }
+        });
 
       // console.log(dbData.orderId);
     }

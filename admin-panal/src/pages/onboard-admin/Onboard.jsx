@@ -26,7 +26,7 @@ const Onboard = () => {
       <p className="text2">4-wheeler: 20 2-wheeler: 20</p>
 
       <div className="hero" style={{ marginTop: "33px" }}>
-        <a href="/dashboard">
+        <a href="/verify">
           <button
             className="but-1"
             style={{ color: "#ffff", margin: "auto", width: "50%" }}
