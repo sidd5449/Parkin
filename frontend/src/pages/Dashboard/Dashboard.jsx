@@ -6,7 +6,7 @@ import axios from "axios";
 const Dashboard = () => {
   const [spots, setspots] = useState(null);
   if (spots === null) {
-    axios.get("https://parkin-express-dep.loca.lt/spots").then((data) => {
+    axios.get("https://parkinwebportal.loca.lt/spots").then((data) => {
       setspots(data.data);
     });
   }

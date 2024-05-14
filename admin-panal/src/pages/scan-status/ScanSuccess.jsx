@@ -7,7 +7,7 @@ import axios from "axios";
 const ScanSuccess = () => {
   const { id } = useParams();
   const raiseBarr = (slid) => {
-    axios.post("https://parkin-express-dep.loca.lt/toggleBarrier", {
+    axios.post("https://parkinwebportal.loca.lt/toggleBarrier", {
       id: slid,
     });
   };
@@ -74,7 +74,11 @@ const ScanSuccess = () => {
             margin: "30px auto",
             width: "max-content",
           }}
-          onClick={raiseBarr.bind(id)}
+          onClick={() => {
+            axios.post("https://parkinwebportal.loca.lt/toggleBarrier", {
+              id: id,
+            });
+          }}
         >
           Close Barrier
         </button>

@@ -41,7 +41,7 @@ const Onboard = () => {
             <h3 style={{ marginTop: "25px" }}>Scan QR Code</h3>
           </button>
         </a>
-        <a href="https://parkin.fun/spot/5039fff2-2ecf-40a2-978a-137e7e21ac84">
+        <a href="https://parkinwebportal.loca.lt/5039fff2-2ecf-40a2-978a-137e7e21ac84">
           <button
             className="but-2"
             style={{
