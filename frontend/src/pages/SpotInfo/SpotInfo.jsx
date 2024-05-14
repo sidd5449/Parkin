@@ -10,11 +10,9 @@ const SpotInfo = () => {
   const { id } = useParams();
   console.log(id);
   if (spot === null) {
-    axios
-      .get(`https://parkin-express-dep.loca.lt/spot/${id}`)
-      .then((data) => {
-        setspot(data.data);
-      });
+    axios.get(`https://parkin-express-dep.loca.lt/spot/${id}`).then((data) => {
+      setspot(data.data);
+    });
   }
   if (slots === null && spot !== null) {
     axios
@@ -30,11 +28,23 @@ const SpotInfo = () => {
       <div className="app_spotinfo" style={{}}>
         <Header />
         <p>{spot.name}</p>
-        {slots.map((slot) => (
-          <a href={`/slot/${slot.unId}`}>
-            <SlotCard booked={slot.booked} status={slot.status} id={slot.id} />
-          </a>
-        ))}
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            flexWrap: "wrap",
+          }}
+        >
+          {slots.map((slot) => (
+            <a href={`/slot/${slot.unId}`}>
+              <SlotCard
+                booked={slot.booked}
+                status={slot.status}
+                id={slot.id}
+              />
+            </a>
+          ))}
+        </div>
       </div>
     );
   }
