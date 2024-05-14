@@ -11,14 +11,14 @@ const SpotInfo = () => {
   console.log(id);
   if (spot === null) {
     axios
-      .get(`https://parkin-express-dep-192-168-85-78.loca.lt/spot/${id}`)
+      .get(`https://parkin-express-dep.loca.lt/spot/${id}`)
       .then((data) => {
         setspot(data.data);
       });
   }
   if (slots === null && spot !== null) {
     axios
-      .get(`https://parkin-express-dep-192-168-85-78.loca.lt/getSlots/${id}`)
+      .get(`https://parkin-express-dep.loca.lt/getSlots/${id}`)
       .then((slots) => {
         setslots(slots.data);
       });
