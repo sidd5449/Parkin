@@ -10,13 +10,13 @@ const SpotInfo = () => {
   const { id } = useParams();
   console.log(id);
   if (spot === null) {
-    axios.get(`https://parkin-express-dep.loca.lt/spot/${id}`).then((data) => {
+    axios.get(`https://parkinwebportal.loca.lt/spot/${id}`).then((data) => {
       setspot(data.data);
     });
   }
   if (slots === null && spot !== null) {
     axios
-      .get(`https://parkin-express-dep.loca.lt/getSlots/${id}`)
+      .get(`https://parkinwebportal.loca.lt/getSlots/${id}`)
       .then((slots) => {
         setslots(slots.data);
       });

@@ -34,13 +34,13 @@ const ScanQR = () => {
       const payId = splits[2];
       console.log(payId);
       axios
-        .get(`https://parkin-express-dep.loca.lt/slot/${slotId}`)
+        .get(`https://parkinwebportal.loca.lt/slot/${slotId}`)
         .then((item) => {
           console.log(item.data);
           setdbData(item.data);
           if (item.data.orderId === payId) {
             console.log("Success");
-            axios.post("https://parkin-express-dep.loca.lt/toggleBarrier", {
+            axios.post("https://parkinwebportal.loca.lt/toggleBarrier", {
               id: item.data.id,
             });
             navigate(`/success/${item.data.id}`);
